@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ predict | upper }} Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+       /* General Styling */
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    font-size: 25px;
+    color: #093475;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    color: rgb(54, 54, 54);
+}
+strong {
+    
+    color: rgb(0, 45, 128);
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #2d3748;
+    padding: 10px 20px;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #e2e8f0;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.card-title {
+    font-size: 24px;
+    color: #4a5568;
+    margin-top: 10px;
+}
+
+/* Alert Box Styling */
+.alert {
+    padding: 20px;
+    background-color: #ffffff;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.alert-heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: maroon;
+}
+
+.alert ul li {
+    margin-bottom: 8px;
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 28px;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.section ul {
+    padding-left: 20px;
+}
+
+.section ul li {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* Card for "Very Mild Cognitive Impairment" */
+.card-header {
+    background-color: #edf2f7;
+    padding: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Width for container in the last section */
+.container[style*="width: 1000px;"] {
+    width: 1000px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container[style*="width: 1000px;"] {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+  <nav class="bg-gray-800 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-white text-lg font-bold">Brain disorder Stage Detection</a>
+        <ul class="flex space-x-4">
+            <li><a href="/" class="text-gray-300 hover:text-white">Home</a></li>
+            <li><a href="{% url 'Deploy_8' %}" class="text-gray-300 hover:text-white">Model</a></li>
+            <li><a href="{% url 'Database' %}" class="text-gray-300 hover:text-white">Database</a></li>
+            <li><a href="{% url 'users-profile' %}" class="text-gray-300 hover:text-white">profile_Database</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="card">
+        <div class="card-content text-center">
+            <h1 class="text-3xl font-bold mb-4">{{ predict | upper }}</h1>
+            <img src="{{ obj.image.url }}" style="width: 400px; height: 350px;" alt="Input Images" class="mb-4 mx-auto">
+            <p class="card-title">{{ predict | upper }}</p>
+        </div>
+    </div>
+
+    {% if obj %}
+    {% if predict == 'absence_seizure' %}
+    <div class="container" style="width: 1000px;">
+        <h1>Absence Seizure Information</h1>
+        
+        <div class="section">
+            <h2>Description</h2>
+            <p>Absence seizures, also known as petit mal seizures, are a type of generalized seizure that involves a brief loss of consciousness. They are most common in children and are characterized by a sudden, brief staring spell or "blanking out." These seizures typically last for only a few seconds but can occur multiple times throughout the day.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Causes</h2>
+            <p>The exact cause of absence seizures is often unknown, but several factors may contribute, including:</p>
+            <ul>
+                <li>Genetic factors: Some children may be genetically predisposed to develop absence seizures.</li>
+                <li>Abnormal brain electrical activity: The brain’s electrical activity may become abnormal, leading to seizures.</li>
+                <li>Neurological conditions: Other underlying neurological conditions, such as epilepsy, can contribute to absence seizures.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Symptoms</h2>
+            <p>Symptoms of absence seizures typically include:</p>
+            <ul>
+                <li>A brief blank stare or loss of awareness</li>
+                <li>Unresponsiveness during the seizure</li>
+                <li>Rapid eye blinking or slight movements, such as lip-smacking</li>
+                <li>Immediate resumption of normal activity after the seizure ends</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Treatment</h2>
+            <p>Absence seizures can often be controlled with the following treatments:</p>
+            <ul>
+                <li><strong>Antiepileptic drugs (AEDs):</strong> Medications like ethosuximide or valproic acid are commonly used to control absence seizures.</li>
+                <li><strong>Dietary changes:</strong> In some cases, a ketogenic diet may be recommended to help control seizures.</li>
+                <li><strong>Vagus nerve stimulation:</strong> For patients who don't respond to medications, a device may be implanted to help control seizures.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Prevention</h2>
+            <p>While absence seizures may not always be preventable, some steps can help manage the condition:</p>
+            <ul>
+                <li>Adhering to prescribed medication regimens.</li>
+                <li>Avoiding triggers, such as lack of sleep, stress, or flashing lights, which may provoke seizures.</li>
+                <li>Maintaining a healthy lifestyle with adequate rest and balanced nutrition.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Precautions</h2>
+            <p>If you or your child has been diagnosed with absence seizures, consider taking the following precautions:</p>
+            <ul>
+                <li>Ensure a safe environment by removing potential hazards, such as sharp objects, during a seizure.</li>
+                <li>Monitor for any changes in seizure frequency or severity and consult your healthcare provider.</li>
+                <li>Wear medical alert identification in case of emergency.</li>
+                <li>Educate family members and caregivers about how to respond during an absence seizure.</li>
+            </ul>
+        </div>
+    </div>
+    {% elif predict == 'atonic_seizures' %}
+    <div class="container" style="width: 1000px;">
+        <h1>Atonic Seizure Information</h1>
+        
+        <div class="section">
+            <h2>Description</h2>
+            <p>Atonic seizures, also known as "drop seizures," are a type of seizure characterized by a sudden loss of muscle strength and control, often resulting in a person collapsing or falling. They are typically brief but can occur multiple times in a day. Atonic seizures can affect people of all ages, though they are most common in children.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Causes</h2>
+            <p>The causes of atonic seizures are often related to underlying neurological conditions. Some common causes include:</p>
+            <ul>
+                <li>Epilepsy syndromes (e.g., Lennox-Gastaut syndrome)</li>
+                <li>Brain injuries or trauma</li>
+                <li>Genetic predisposition</li>
+                <li>Brain malformations</li>
+                <li>Certain metabolic disorders</li>
+                <li>Infections or tumors affecting the brain</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Symptoms</h2>
+            <p>Atonic seizures typically manifest through the sudden loss of muscle tone, leading to the following symptoms:</p>
+            <ul>
+                <li>Sudden collapse or falling to the ground</li>
+                <li>Head drop or drooping posture</li>
+                <li>Loss of muscle strength in the arms or legs</li>
+                <li>Brief loss of consciousness (in some cases)</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Treatment</h2>
+            <p>Treatment for atonic seizures generally focuses on managing the underlying cause and controlling the seizures. Common treatments include:</p>
+            <ul>
+                <li><strong>Antiepileptic medications:</strong> Such as valproate, lamotrigine, or topiramate to help control seizures.</li>
+                <li><strong>Vagus nerve stimulation (VNS):</strong> A therapy that involves implanting a device to reduce seizure frequency.</li>
+                <li><strong>Surgery:</strong> In severe cases, surgery may be considered to remove a seizure focus in the brain.</li>
+                <li><strong>Dietary therapy:</strong> A ketogenic diet has been shown to help some individuals with drug-resistant seizures.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Prevention</h2>
+            <p>Preventing atonic seizures involves managing risk factors and adhering to prescribed treatments:</p>
+            <ul>
+                <li>Taking medications as prescribed by a healthcare provider.</li>
+                <li>Avoiding known seizure triggers (e.g., lack of sleep, stress, flashing lights).</li>
+                <li>Maintaining a regular routine with adequate sleep and stress management.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Precautions</h2>
+            <p>If you or someone you know experiences atonic seizures, it's important to take the following precautions to ensure safety:</p>
+            <ul>
+                <li>Use safety equipment, such as helmets, to prevent injury during falls.</li>
+                <li>Ensure a safe environment, free from obstacles that could cause harm during a seizure.</li>
+                <li>Always have someone nearby when engaging in activities that could result in injury if a seizure occurs.</li>
+                <li>Follow up regularly with a healthcare provider to monitor the condition and adjust treatment as needed.</li>
+            </ul>
+        </div>
+    </div>
+    
+    {% elif predict == 'autism' %}
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Autism Spectrum Disorder (ASD) Detection</h4>
+        <p>
+            Autism Spectrum Disorder (ASD) is a complex developmental disorder characterized by difficulties in social interaction, communication, and behavior. Individuals with ASD often exhibit a range of symptoms that can vary from mild to severe, making early detection and intervention crucial for improving long-term outcomes.
+        </p>
+        <hr>
+        <p>
+            <strong>Description:</strong>
+            <ul>
+                <li><strong>Social Interaction:</strong> Individuals with ASD may struggle with understanding social cues, forming relationships, and engaging in reciprocal interactions.</li>
+                <li><strong>Communication:</strong> Communication difficulties can include delayed speech development, problems with conversational skills, and challenges in interpreting nonverbal communication such as gestures and facial expressions.</li>
+                <li><strong>Behavior:</strong> Repetitive behaviors, strict adherence to routines, and intense focus on specific interests are common. These behaviors can impact daily functioning and social integration.</li>
+            </ul>
+        </p>
+        <p>
+            <strong>Prevention:</strong>
+            <ul>
+                <li><strong>Genetic Counseling:</strong> For families with a history of ASD, genetic counseling can provide insights into potential risks and early signs of the disorder.</li>
+                <li><strong>Early Screening:</strong> Regular developmental screenings during pediatric visits can help identify early signs of ASD and ensure timely intervention.</li>
+                <li><strong>Educational Programs:</strong> Awareness and training programs for parents and caregivers on developmental milestones can aid in early detection.</li>
+            </ul>
+        </p>
+        <p>
+            <strong>Precautions:</strong>
+            <ul>
+                <li><strong>Professional Evaluation:</strong> If ASD is suspected, seek evaluation from a qualified specialist such as a pediatric neurologist or psychologist for a comprehensive assessment.</li>
+                <li><strong>Monitoring Development:</strong> Continuously monitor developmental progress and behavioral changes to adjust support and intervention strategies as needed.</li>
+                <li><strong>Support Networks:</strong> Engage with support groups and organizations to stay informed about new research, resources, and community support.</li>
+            </ul>
+        </p>
+        <p>
+            <strong>Treatment:</strong>
+            <ul>
+                <li><strong>Behavioral Therapy:</strong> Applied Behavior Analysis (ABA) and other behavioral therapies can help improve specific skills and behaviors.</li>
+                <li><strong>Speech Therapy:</strong> Speech-language pathologists can assist in developing communication skills and addressing language delays.</li>
+                <li><strong>Occupational Therapy:</strong> Occupational therapists can help with daily living skills, sensory processing issues, and motor skills development.</li>
+                <li><strong>Social Skills Training:</strong> Programs designed to enhance social skills and peer interactions can be beneficial for individuals with ASD.</li>
+                <li><strong>Family Support:</strong> Counseling and support for families can help them cope with the challenges of ASD and better support their loved ones.</li>
+            </ul>
+        </p>
+
+    </div>
+    {% elif predict == 'clonic_seizure' %}
+    <div class="container" style="width: 1000px;">
+        <h1>Clonic Seizure Information</h1>
+        
+        <div class="section">
+            <h2>Description</h2>
+            <p>A clonic seizure is a type of seizure characterized by repetitive, rhythmic jerking movements of muscles, often on both sides of the body. These seizures typically involve rapid muscle contractions that can last for several seconds to minutes. Clonic seizures can occur as part of a generalized seizure or as a result of a neurological condition.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Causes</h2>
+            <p>Clonic seizures can be caused by various factors, including:</p>
+            <ul>
+                <li>Epilepsy or other seizure disorders</li>
+                <li>Brain injury or trauma</li>
+                <li>Infections affecting the brain (e.g., meningitis, encephalitis)</li>
+                <li>Stroke or brain tumor</li>
+                <li>Certain genetic conditions</li>
+                <li>Alcohol withdrawal or substance abuse</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Symptoms</h2>
+            <p>During a clonic seizure, the following symptoms may occur:</p>
+            <ul>
+                <li>Rhythmic jerking of the arms and legs</li>
+                <li>Lack of control over muscle movement</li>
+                <li>Loss of consciousness (in some cases)</li>
+                <li>Possible loss of bladder control</li>
+                <li>Foaming at the mouth or drooling</li>
+                <li>Confusion or drowsiness after the seizure</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Treatment</h2>
+            <p>Treatment for clonic seizures typically involves:</p>
+            <ul>
+                <li><strong>Antiepileptic medications:</strong> To control and prevent seizures.</li>
+                <li><strong>Seizure management strategies:</strong> To ensure safety during an active seizure (e.g., protecting the person from injury).</li>
+                <li><strong>Medical devices:</strong> In some cases, devices like a vagus nerve stimulator may help manage seizures.</li>
+                <li><strong>Surgery:</strong> If seizures are refractory to medication and are localized to a specific part of the brain.</li>
+                <li><strong>Behavioral therapy:</strong> For managing triggers and lifestyle adjustments.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Prevention</h2>
+            <p>To reduce the risk of clonic seizures, consider the following:</p>
+            <ul>
+                <li>Adhering to prescribed seizure medications and treatment plans.</li>
+                <li>Avoiding seizure triggers such as stress, lack of sleep, and alcohol use.</li>
+                <li>Maintaining a healthy lifestyle with regular physical activity and a balanced diet.</li>
+                <li>Limiting exposure to environmental factors that may increase the likelihood of seizures (e.g., flashing lights).</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Precautions</h2>
+            <p>If you or someone you know has clonic seizures, take these precautions:</p>
+            <ul>
+                <li>Ensure the environment is safe and free of hazards to prevent injury during a seizure.</li>
+                <li>Carry medical identification that indicates a history of seizures.</li>
+                <li>Keep emergency contact information available and educate others on how to help during a seizure.</li>
+                <li>Regularly visit healthcare providers to monitor the effectiveness of treatment and make necessary adjustments.</li>
+            </ul>
+        </div>
+    </div>
+    {% elif predict == 'control' %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Control Group Information</h4>
+        <p>
+            The control group represents individuals who do not exhibit the signs or symptoms of Autism Spectrum Disorder (ASD). These individuals typically show typical developmental milestones and behavioral patterns that align with standard expectations for their age group.
+        </p>
+        <hr>
+        <p>
+            <strong>Description:</strong>
+            <ul>
+                <li>Individuals in the control group demonstrate normal social interaction, communication skills, and behavioral patterns.</li>
+                <li>They usually exhibit age-appropriate responses to social and environmental stimuli.</li>
+                <li>Developmental milestones such as speech, motor skills, and social behaviors are typically met within expected ranges.</li>
+            </ul>
+        </p>
+        <p>
+            <strong>Prevention:</strong>
+            <ul>
+                <li><strong>Healthy Development:</strong> Continue to support healthy development by providing a stimulating environment, engaging in positive social interactions, and fostering educational opportunities.</li>
+                <li><strong>Regular Check-Ups:</strong> Ensure regular developmental screenings and check-ups to monitor growth and address any emerging issues promptly.</li>
+                <li><strong>Positive Reinforcement:</strong> Encourage and reinforce positive behaviors and achievements to support ongoing healthy development.</li>
+            </ul>
+        </p>
+        <p>
+            <strong>Precautions:</strong>
+            <ul>
+                <li><strong>Monitor Development:</strong> While in the control group, it is important to continue monitoring for any unusual changes in behavior or development that may require further evaluation.</li>
+                <li><strong>Healthy Environment:</strong> Maintain a healthy and supportive environment to nurture continued positive growth and development.</li>
+                <li><strong>Stay Informed:</strong> Stay informed about developmental milestones and early signs of developmental concerns to act swiftly if needed.</li>
+            </ul>
+        </p>
+        <p>
+            <strong>Treatment:</strong>
+            <ul>
+                <li><strong>Standard Care:</strong> No specific treatment is required for the control group as they are not exhibiting symptoms of ASD. However, maintaining general health and well-being through balanced nutrition, regular exercise, and mental stimulation is recommended.</li>
+                <li><strong>Education and Support:</strong> Continue to provide educational support and opportunities for skill development to ensure continued growth and learning.</li>
+                <li><strong>Parental Guidance:</strong> Parents and caregivers should be encouraged to seek guidance and resources to support their child's ongoing development and address any emerging needs.</li>
+            </ul>
+        </p>
+        
+    </div>
+    {% elif predict == 'Very_Mild_Impairment' %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Very Mild Cognitive Impairment</h2>
+        </div>
+        <div class="card-body">
+            <p>Very mild cognitive impairment involves slight memory problems and other cognitive deficits that are noticeable but not significant enough to interfere with daily life.</p>
+            <h3>Symptoms</h3>
+            <ul>
+                <li>Occasional forgetfulness</li>
+                <li>Minor difficulties with word recall</li>
+                <li>Subtle changes in thinking skills</li>
+                <li>Small lapses in concentration</li>
+            </ul>
+            <h3>Effects</h3>
+            <ul>
+                <li>Mild impact on daily activities</li>
+                <li>Noticeable by close family or friends</li>
+                <li>May increase anxiety or frustration</li>
+            </ul>
+            <h3>Causes</h3>
+            <ul>
+                <li>Natural aging process</li>
+                <li>Genetic predisposition</li>
+                <li>Health conditions such as diabetes or hypertension</li>
+                <li>Lifestyle factors like poor diet, lack of exercise, and smoking</li>
+                <li>Chronic stress or lack of sleep</li>
+            </ul>
+            <h3>Treatment</h3>
+            <ul>
+                <li>No specific treatment required, but monitoring is recommended</li>
+                <li>Engagement in cognitive training and mental exercises</li>
+                <li>Healthy lifestyle choices and managing overall health</li>
+            </ul>
+            <h3>Prevention</h3>
+            <ul>
+                <li>Maintaining a balanced diet</li>
+                <li>Regular physical exercise</li>
+                <li>Mental stimulation activities</li>
+                <li>Social interaction</li>
+                <li>Stress management</li>
+                <li>Getting adequate sleep</li>
+            </ul>
+            <h3>Precautions</h3>
+            <ul>
+                <li>Regular health check-ups</li>
+                <li>Monitoring cognitive changes</li>
+                <li>Adopting a healthy lifestyle to delay progression</li>
+            </ul>
+        </div>
+    </div>
+    {% elif predict == 'onset_seizure' %}
+    <div class="container" style="width: 1000px;">
+        <div class="container" style="width: 1000px;">
+            <h1>Onset Seizure Information</h1>
+            
+            <div class="section">
+                <h2>Description</h2>
+                <p>An onset seizure is the initial occurrence or first signs of a seizure episode, which can happen unexpectedly. Seizures are caused by abnormal electrical activity in the brain and can vary in type, severity, and duration. The onset of seizures can be triggered by a variety of factors such as neurological disorders, head trauma, or other medical conditions.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Causes</h2>
+                <p>The onset of seizures can be triggered by a number of different factors, including:</p>
+                <ul>
+                    <li>Epilepsy or seizure disorders</li>
+                    <li>Head trauma or injury to the brain</li>
+                    <li>Brain infections (e.g., meningitis, encephalitis)</li>
+                    <li>Stroke or brain tumors</li>
+                    <li>Genetic factors and family history of seizures</li>
+                    <li>Drug or alcohol abuse or withdrawal</li>
+                    <li>High fever (in children)</li>
+                    <li>Metabolic disturbances, such as low blood sugar or electrolyte imbalance</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>Symptoms</h2>
+                <p>The symptoms of a seizure during its onset can vary, but may include:</p>
+                <ul>
+                    <li>Sudden loss of consciousness</li>
+                    <li>Convulsions or uncontrollable jerking movements</li>
+                    <li>Staring spells or brief episodes of blanking out</li>
+                    <li>Unusual sensations, such as tingling or numbness</li>
+                    <li>Auditory or visual hallucinations</li>
+                    <li>Confusion or disorientation after the seizure ends</li>
+                    <li>Loss of muscle control and falling</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>Treatment</h2>
+                <p>Treatment for seizures depends on the underlying cause and type of seizure. Common approaches include:</p>
+                <ul>
+                    <li><strong>Medications:</strong> Anti-seizure medications (also called anticonvulsants) are commonly prescribed to control and prevent seizures.</li>
+                    <li><strong>Dietary therapies:</strong> For some individuals, a ketogenic diet (high-fat, low-carb) may help reduce seizures.</li>
+                    <li><strong>Surgery:</strong> In rare cases, surgery may be considered if seizures are resistant to medication.</li>
+                    <li><strong>Vagus nerve stimulation (VNS):</strong> A device implanted under the skin that stimulates the vagus nerve to reduce seizures.</li>
+                    <li><strong>Responsive neurostimulation (RNS):</strong> A device that monitors brain activity and delivers electrical impulses to prevent seizures.</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>Prevention</h2>
+                <p>While seizures cannot always be prevented, the risk can be minimized by:</p>
+                <ul>
+                    <li>Adhering to prescribed seizure medications and treatment plans.</li>
+                    <li>Avoiding known seizure triggers, such as lack of sleep or flashing lights.</li>
+                    <li>Maintaining a healthy lifestyle, including regular exercise and stress management techniques.</li>
+                    <li>Avoiding alcohol or drug abuse, which can trigger seizures.</li>
+                    <li>Regular monitoring and management of underlying health conditions (e.g., diabetes, epilepsy).</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>Precautions</h2>
+                <p>If you or someone you know experiences onset seizures, consider these precautions to help manage and protect health:</p>
+                <ul>
+                    <li>Avoiding potentially dangerous activities during a seizure, such as swimming or driving.</li>
+                    <li>Wearing medical identification that indicates a seizure disorder.</li>
+                    <li>Creating a safe environment to prevent injury during a seizure episode.</li>
+                    <li>Seeking medical advice immediately if seizures occur more frequently or if there are significant changes in seizure patterns.</li>
+                    <li>Providing support and encouragement to individuals with seizures to help manage anxiety and emotional stress.</li>
+                </ul>
+            </div>
+        </div>
+        
+    
+    {% elif predict == 'No_Impairment' %}
+    <div class="card">
+        <div class="card-header">
+            <h2>This is Normal Conditions of Brain</h2>
+        </div>
+        <div class="card-body">
+            <p>No specific treatment is required for a normal brain.</p>
+            <h3>Prevention</h3>
+            <div class="prevention">
+                <h4>Healthy Lifestyle Choices:</h4>
+                <ul>
+                    <li><strong>Diet:</strong> Consume a balanced diet rich in fruits, vegetables, whole grains, lean proteins, and healthy fats. Omega-3 fatty acids, found in fish, flaxseed, and walnuts, are particularly beneficial for brain health.</li>
+                    <li><strong>Exercise:</strong> Engage in regular physical activity. Aim for at least 150 minutes of moderate aerobic exercise or 75 minutes of vigorous exercise per week. Activities like walking, swimming, and cycling are excellent choices.</li>
+                    <li><strong>Sleep:</strong> Ensure adequate sleep, typically 7-9 hours per night for adults. Good sleep hygiene includes maintaining a regular sleep schedule and creating a restful environment.</li>
+                </ul>
+                <h4>Mental Stimulation:</h4>
+                <ul>
+                    <li><strong>Cognitive Activities:</strong> Engage in activities that challenge the brain, such as puzzles, reading, learning new skills, and playing musical instruments.</li>
+                    <li><strong>Social Interaction:</strong> Maintain social connections and engage in regular social activities to keep the brain active and engaged.</li>
+                </ul>
+                <h4>Stress Management:</h4>
+                <ul>
+                    <li><strong>Relaxation Techniques:</strong> Practice stress-relief techniques such as meditation, yoga, deep breathing exercises, and mindfulness.</li>
+                    <li><strong>Healthy Coping Strategies:</strong> Develop healthy ways to manage stress, such as talking to a friend, engaging in hobbies, or seeking professional help when needed.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'Mild_Impairment' %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Mild Cognitive Impairment (MCI)</h2>
+        </div>
+        <div class="card-body">
+            <p>MCI involves problems with memory, language, thinking, or judgment that are greater than normal age-related changes but do not interfere significantly with daily life.</p>
+            <h3>Symptoms</h3>
+            <ul>
+                <li>Memory loss</li>
+                <li>Difficulty with language</li>
+                <li>Problems with attention</li>
+                <li>Challenges with decision making</li>
+                <li>Difficulty with complex tasks</li>
+                <li>Disorientation</li>
+            </ul>
+            <h3>Causes</h3>
+            <ul>
+                <li>Age-related changes</li>
+                <li>Genetics</li>
+                <li>Medical conditions like neurological disorders and cardiovascular issues</li>
+                <li>Lifestyle factors such as poor diet and lack of exercise</li>
+                <li>Chronic stress</li>
+            </ul>
+            <h3>Treatment, Prevention, Precaution</h3>
+            <ul>
+                <li>Manage chronic conditions like diabetes and hypertension</li>
+                <li>Regular physical activity</li>
+                <li>Mental stimulation through puzzles, reading, and learning new skills</li>
+                <li>Social engagement and maintaining relationships</li>
+                <li>Healthy diet rich in fruits, vegetables, whole grains, and lean proteins</li>
+                <li>Adequate sleep of 7-8 hours per night</li>
+                <li>Limit alcohol consumption and quit smoking</li>
+                <li>Avoid head injuries by wearing helmets and using seat belts</li>
+            </ul>
+            <h3>Physical Activities</h3>
+            <ul>
+                <li>Physical therapy exercises to strengthen muscles</li>
+                <li>Swimming to improve overall muscle tone</li>
+                <li>Yoga and Pilates for improving flexibility and core strength</li>
+                <li>Low-impact aerobics to enhance cardiovascular health</li>
+            </ul>
+            <h3>Dietary Recommendations</h3>
+            <ul>
+                <li>Calcium and vitamin D-rich foods to support bone health</li>
+                <li>Anti-inflammatory foods such as fish, nuts, and leafy greens</li>
+                <li>Whole grains, lean proteins, and plenty of fruits and vegetables for overall health</li>
+                <li>Hydration with water and limiting sugary or caffeinated beverages</li>
+            </ul>
+        </div>
+    </div>
+    {% elif predict == 'Moderate_Impairment' %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Moderate Cognitive Impairment</h2>
+        </div>
+        <div class="card-body">
+            <p>Moderate cognitive impairment involves more significant problems with memory, language, thinking, and judgment than mild impairment and begins to interfere with daily life.</p>
+            <h3>Symptoms</h3>
+            <ul>
+                <li>More pronounced memory loss</li>
+                <li>Greater difficulty with language</li>
+                <li>Problems with complex tasks</li>
+                <li>Disorientation and confusion</li>
+                <li>Difficulty with daily tasks</li>
+            </ul>
+            <h3>Effects</h3>
+            <ul>
+                <li>Increased difficulty with daily activities</li>
+                <li>Potential for reduced independence</li>
+                <li>Higher risk of progressing to dementia</li>
+            </ul>
+            <h3>Causes</h3>
+            <ul>
+                <li>Age-related brain changes</li>
+                <li>Genetic factors</li>
+                <li>Medical conditions such as diabetes, hypertension, and cardiovascular diseases</li>
+                <li>Neurological disorders such as Alzheimer's disease</li>
+                <li>Lifestyle factors like poor diet, lack of exercise, and smoking</li>
+                <li>Chronic stress and sleep disturbances</li>
+            </ul>
+            <h3>Treatment</h3>
+            <ul>
+                <li>Medications to manage symptoms and slow progression</li>
+                <li>Cognitive therapies to improve mental function</li>
+                <li>Regular medical check-ups and management of underlying health conditions</li>
+                <li>Supportive care from healthcare professionals and caregivers</li>
+            </ul>
+            <h3>Prevention</h3>
+            <ul>
+                <li>Healthy diet rich in fruits, vegetables, whole grains, and lean proteins</li>
+                <li>Regular physical exercise</li>
+                <li>Mental stimulation through activities like puzzles, reading, and learning new skills</li>
+                <li>Social engagement and maintaining relationships</li>
+                <li>Adequate sleep of 7-8 hours per night</li>
+                <li>Limit alcohol consumption and quit smoking</li>
+                <li>Avoid head injuries by wearing helmets and using seat belts</li>
+            </ul>
+            <h3>Precautions</h3>
+            <ul>
+                <li>Regular monitoring of cognitive health</li>
+                <li>Early intervention strategies</li>
+                <li>Comprehensive care plans involving healthcare providers and family members</li>
+                <li>Creating a safe living environment to prevent accidents and injuries</li>
+            </ul>
+        </div>
+    </div>
+    
+    {% endif %}
+{% endif %}
+
+</div>
+</body>
+</html>

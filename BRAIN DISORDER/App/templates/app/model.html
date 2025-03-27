@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  
+body {
+  display: flex;
+  align-items: center; justify-content: center;
+  min-height: 100vh;
+  background-image: url('https://images.pexels.com/photos/724994/pexels-photo-724994.jpeg?auto=compress&cs=tinysrgb&w=600');
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #333;
+  background-size: cover;
+}
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+#up-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(0, 183, 255);
+}
+
+#upload {
+  background-image: url('https://www.eternalhospital.com/uploadedfiles/gallery/1722429927_Large-what-is-a-neurological-disorder.jpg'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 20px;
+  color: #343a40;
+}
+
+#up-demo {
+  font-size: 16px;
+  text-align: center;
+  color: #555;
+  margin-top: 10px;
+}
+
+form {
+  margin-top: 30px;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+p {
+  color: #6c757d;
+}
+
+#up-label {
+  background-color: #00b327;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#up-label input[type="submit"] {
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+#up-label:hover {
+  background-color: #0065a0;
+}
+
+#code-boxx {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#code-boxx a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#code-boxx a:hover {
+  color: #0056b3;
+}
+
+img {
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+center {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  #up-wrap {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #upload {
+    height: 150px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  #up-demo {
+    font-size: 14px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <div id="up-wrap">
+    <div id="upload"></div>
+    <h1>DEPLOYMENT</h1>
+  
+    <!-- (A) PROGRESS BAR -->
+
+    <div id="up-demo">Deep Learning deployment is the process of making trained neural network models.</div><br>
+   
+    <!-- (B) FILE PICKER -->
+
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <center><p style="color: antiquewhite;">{{ form.as_p }}</p></center><br><br>
+      
+ 
+      <center><label for="up-file" id="up-label"><input type="submit" value="Upload File">
+      </label></center>
+    
+
+    </form>
+        <center>
+          {% if obj %}
+          <br><br><img src="{{ obj.image.url }}" height="300" width="300"><br>
+            <h2 style="color: rgb(5, 1, 1);">{{predict | upper}}<h2><br>
+          {% endif %}
+        </center>
+          <!-- (X) VISIT CODE-BOXX -->
+          <div id="code-boxx">
+          Go To 
+            <a href="/"
+              target="_blank">
+              HOME 
+            </a>
+            Page
+    </div>
+  </div>
+</body>
+</html>

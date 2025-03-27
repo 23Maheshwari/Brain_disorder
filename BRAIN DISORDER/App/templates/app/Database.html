@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600;700&display=swap');
+/* General body and table styles */
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  width: 80%;
+  margin: 50px auto;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+caption {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 15px 0;
+  text-align: center;
+  color: #333;
+}
+
+thead {
+  background-color: #343a40;
+  color: #fff;
+}
+
+thead th {
+  padding: 10px 20px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+tbody {
+  font-size: 1rem;
+  color: #333;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tbody td {
+  padding: 15px;
+  text-align: left;
+}
+
+tbody td img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+tbody td[data-label="name"] {
+  text-align: center;
+}
+
+tbody td:last-child {
+  text-align: center;
+}
+
+/* Hover effect for table rows */
+tbody tr:hover {
+  background-color: #bcdae2;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  table {
+      width: 100%;
+  }
+
+  caption {
+      font-size: 1.2rem;
+  }
+
+  thead th, tbody td {
+      font-size: 0.9rem;
+      padding: 8px;
+  }
+
+  tbody td {
+      display: block;
+      text-align: right;
+      padding: 10px 0;
+  }
+
+  tbody td[data-label="name"] {
+      text-align: center;
+  }
+
+  tbody td:last-child {
+      text-align: left;
+      padding-top: 0;
+  }
+
+  tbody td:before {
+      content: attr(data-label);
+      font-weight: bold;
+      padding-right: 10px;
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <table>
+        <caption>DATABASE</caption>
+        <thead>
+          <tr class="thead">
+            <th scope="col">IMAGES</th>
+            <th scope="col">LABEL</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for model in models %}
+          <tr>
+              <td data-label="name">
+                  <img class="h-auto max-w-full rounded-lg" src="{{ model.image.url }}" alt="Image" width="250" height="250">
+              </td>
+              <td>{{ model.label }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+      
+      </table>
+    
+</body>
+</html>
